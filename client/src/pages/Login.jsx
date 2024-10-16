@@ -4,21 +4,25 @@ import { FormRow, Logo, SubmitBtn } from "../components";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-  try {
-    await customFetch.post("/auth/login", data);
-    toast.success("Login successful");
-    return redirect("/dashboard");
-  } catch (error) {
-    toast.error(error?.response?.data?.msg);
-    return error;
-  }
-};
+export const action =
+  (queryClient) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    try {
+      await customFetch.post("/auth/login", data);
+      queryClient.invalidateQueries();
+      toast.success("Login successful");
+      return redirect("/dashboard");
+    } catch (error) {
+      toast.error(error?.response?.data?.msg);
+      return error;
+    }
+  };
 
 const Login = () => {
   const navigate = useNavigate();
+
   const loginDemoUser = async () => {
     const data = {
       email: "rajib@gmail.com",
@@ -39,7 +43,7 @@ const Login = () => {
         <h4>login</h4>
         <FormRow type="email" name="email" />
         <FormRow type="password" name="password" />
-        <SubmitBtn formBtn />
+        <SubmitBtn />
         <button type="button" className="btn btn-block" onClick={loginDemoUser}>
           explore the app
         </button>

@@ -19,10 +19,9 @@ const SearchContainer = () => {
       }, 2000);
     };
   };
-
   return (
     <Wrapper>
-      <Form>
+      <Form className="form">
         <h5 className="form-title">search form</h5>
         <div className="form-center">
           <FormRow
@@ -33,6 +32,7 @@ const SearchContainer = () => {
               submit(form);
             })}
           />
+
           <FormRowSelect
             labelText="job status"
             name="jobStatus"

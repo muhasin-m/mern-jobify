@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import Wrapper from "../assets/wrappers/LandingPage";
 import main from "../assets/images/main.svg";
 import { Link } from "react-router-dom";
@@ -12,22 +13,22 @@ const Landing = () => {
       <div className="container page">
         <div className="info">
           <h1>
-            My job <span>tracking </span> app
+            job <span>tracking</span> app
           </h1>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit
-            quibusdam maxime, molestias assumenda unde optio omnis dicta cumque
-            magni distinctio facere doloribus architecto ipsum ex quidem
-            mollitia libero laboriosam quaerat.
+            I'm baby wayfarers hoodie next level taiyaki brooklyn cliche blue
+            bottle single-origin coffee chia. Aesthetic post-ironic venmo,
+            quinoa lo-fi tote bag adaptogen everyday carry meggings +1 brunch
+            narwhal.
           </p>
-          <Link to={"/register"} className="btn register-link">
+          <Link to="/register" className="btn register-link">
             Register
           </Link>
-          <Link to={"/login"} className="btn ">
+          <Link to="/login" className="btn ">
             Login / Demo User
           </Link>
         </div>
-        <img src={main} alt="job hunt" className="img main" />
+        <img src={main} alt="job hunt" className="img main-img" />
       </div>
     </Wrapper>
   );
